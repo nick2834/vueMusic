@@ -34,14 +34,6 @@ export default {
   components: { closeBar },
   mounted() {
     let self = this;
-    this.$http
-      .get("http://45.32.59.106:3000/top/playlist/highquality")
-      .then(({ data }) => {
-        console.log(data);
-        if (data && data.playlists) {
-          self.playlists = data.playlists;
-        }
-      });
   },
 };
 </script>
