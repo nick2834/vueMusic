@@ -1,16 +1,24 @@
 <template>
   <a-layout class="content">
     <a-layout-sider class="side_container">
-      <div class="search_content unDrag">
-        <input class="input" type="text" placeholder="搜索" />
-        <a-icon class="icon" slot="prefix" type="search" />
-        <a-icon class="icon icon_plus" slot="prefix" type="plus" />
+      <search-bar />
+      <div class="todo_content unDrag">
+        <a-icon type="check-circle" />
+        <span>代办·0</span>
+        <a-icon class="close" type="close-circle" theme="filled" />
       </div>
-      <a-list class="playlists unDrag" item-layout="horizontal" :data-source="playlists">
+      <a-list
+        class="playlists unDrag"
+        item-layout="horizontal"
+        :data-source="playlists"
+      >
         <a-list-item slot="renderItem" slot-scope="item, index">
-          <a-list-item-meta :description="item.copywriter">
-            <a slot="title" href="">{{ item.name }}</a>
-            <a-avatar slot="avatar" :src="item.coverImgUrl" />
+          <a-list-item-meta
+            class="textOverflow"
+            description="Ant Design, a design language"
+          >
+            <a slot="title" href="">{{ item.title }} {{ index }}</a>
+            <a-avatar shape="square" size="large" slot="avatar" />
           </a-list-item-meta>
         </a-list-item>
       </a-list>
@@ -25,13 +33,51 @@
 
 <script>
 import closeBar from "@/components/closeBar/closeBar";
+import searchBar from "@/components/searchBar/searchBar";
 export default {
   data() {
     return {
-      playlists: [],
+      playlists: [
+        {
+          title: "Ant Design Title 1",
+        },
+        {
+          title: "Ant Design Title 2",
+        },
+        {
+          title: "Ant Design Title 3",
+        },
+        {
+          title: "Ant Design Title 4",
+        },
+        {
+          title: "Ant Design Title 1",
+        },
+        {
+          title: "Ant Design Title 2",
+        },
+        {
+          title: "Ant Design Title 3",
+        },
+        {
+          title: "Ant Design Title 4",
+        },
+        {
+          title: "Ant Design Title 1",
+        },
+        {
+          title: "Ant Design Title 2",
+        },
+        {
+          title: "Ant Design Title 3",
+        },
+        {
+          title: "Ant Design Title 4",
+        },
+      ],
     };
   },
-  components: { closeBar },
+  components: { closeBar, searchBar },
   mounted() {
     let self = this;
   },
@@ -39,53 +85,54 @@ export default {
 </script>
 
 <style lang="less">
-.content {
-  height: 100%;
-  .side_container {
-    background: #ffffff;
-    border-right: 1px solid #eaeaea;
-    padding: 25px 10px 10px;
-    box-sizing: border-box;
-    .search_content {
-      position: relative;
-      .input {
-        border: 1px solid #eaeaea;
-        padding-left: 25px;
-        box-sizing: border-box;
-        width: 150px;
-        height: 25px;
-        line-height: 25px;
-        font-size: 12px;
-        border-radius: 2px;
-        &::-webkit-input-placeholder {
-          color: #999999;
-        }
-      }
-      .icon {
-        position: absolute;
-        left: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 14px;
-        &.icon_plus {
-          right: 0;
-          left: unset;
-          width: 25px;
-          height: 25px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          &:hover {
-            background: rgb(245, 245, 245);
-          }
-        }
-      }
+.todo_content {
+  border-bottom: 1px solid #eaeaea;
+  min-height: 35px;
+  line-height: 35px;
+  padding: 0 12px;
+  cursor: pointer;
+  position: relative;
+  .close {
+    position: absolute;
+    display: none;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+  }
+  &:hover {
+    background: #eaeaea;
+    .close {
+      display: block;
     }
-    .playlists{
-      height: calc(100% - 60px);
-      overflow-y: scroll;
+  }
+}
+.playlists {
+  height: calc(100% - 95px);
+  overflow-y: scroll;
+  .ant-list-item {
+    padding: 12px 10px;
+    &:hover {
+      background: #eaeaea;
     }
+  }
+  .ant-list-item-meta-avatar {
+    margin-right: 10px;
+  }
+  .ant-list-item-meta-title {
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #333333;
+  }
+  .ant-list-item-meta-description {
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgb(121, 121, 121);
+    font-size: 12px;
   }
 }
 </style>

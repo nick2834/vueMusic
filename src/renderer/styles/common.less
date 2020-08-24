@@ -1,8 +1,37 @@
+::-webkit-scrollbar {
+  height: 10px !important;
+  width: 9px !important;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border-style: dashed;
+  background-color: rgba(153, 153, 153, 0.4);
+  border-color: transparent;
+  border-width: 1.5px;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(153, 153, 153, 0.8);
+}
+.textOverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .common_container {
   overflow: hidden;
   height: 100%;
   .container {
     height: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.content {
+  height: 100%;
+  .side_container {
+    background: #ffffff;
+    border-right: 1px solid #eaeaea;
     box-sizing: border-box;
   }
 }

@@ -19,30 +19,33 @@ export default new Router({
       component: require("@/views/Main/main").default,
       children: [
         {
-          path: "/last",
+          path: "last",
           name: "last",
           component: require("@/views/last/last").default,
           meta: {
             icon: require("@/assets/images/last_normal.png"),
             activeIcon: require("@/assets/images/last_selected.png")
           },
+          children:[
+
+          ]
         },
         {
-          path: "/file",
-          name: "file",
-          component: require("@/views/file/file").default,
-          meta: {
-            icon: require("@/assets/images/file_normal.png"),
-            activeIcon: require("@/assets/images/file_selected.png")
-          },
-        },
-        {
-          path: "/contacts",
+          path: "contacts",
           name: "contacts",
           component: require("@/views/contacts/contacts").default,
           meta: {
             icon: require("@/assets/images/contacts_normal.png"),
             activeIcon: require("@/assets/images/contacts_selected.png")
+          },
+        },
+        {
+          path: "file",
+          name: "file",
+          component: require("@/views/file/file").default,
+          meta: {
+            icon: require("@/assets/images/file_normal.png"),
+            activeIcon: require("@/assets/images/file_selected.png")
           },
         },
       ],
